@@ -8,7 +8,6 @@ import backtype.storm.tuple.Fields;
 import backtype.storm.tuple.Tuple;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.mortbay.util.ajax.JSON;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -147,7 +146,7 @@ public class SplitMessageBolt implements IRichBolt {
             result.put("warehouseId", data[0]);
             result.put("listingId", data[1]);
             result.put("sellerId", data[2]);
-//            result.put("idempotenceKey", idempotenceKey);
+            result.put("idempotenceKey", idempotenceKey);
 
             list.add(result);
             if (roundMod > 0)
@@ -159,14 +158,14 @@ public class SplitMessageBolt implements IRichBolt {
         HashMap request = new HashMap();
         request.put("bucketList", list);
         System.out.println("******************************" + request);
-        callBucket(JSON.toString(request));
+//        callBucket(JSON.toString(request));
 
-        int quantity2 = testMap.get(key) + quantity;
-        testMap.put(key, quantity2);
-
-        Thread.sleep(100);
-
-        System.out.println("******************************" +  testMap);
+//        int quantity2 = testMap.get(key) + quantity;
+//        testMap.put(key, quantity2);
+//
+//        Thread.sleep(100);
+//
+//        System.out.println("******************************" +  testMap);
     }
 
 

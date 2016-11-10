@@ -26,12 +26,12 @@ public class ExampleServlet extends HttpServlet {
                 .fieldsGrouping("call-log-reader-spout", new Fields("warehouseId", "wid"));
         LocalCluster cluster = new LocalCluster();
         cluster.submitTopology("LogAnalyserStorm", config, builder.createTopology());
-        try {
-            Thread.sleep(10000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }
-        cluster.shutdown();
+//        try {
+//            Thread.sleep(10000);
+//        } catch (InterruptedException e) {
+//            e.printStackTrace();
+//        }
+//        cluster.shutdown();
 
         resp.setStatus(HttpStatus.OK_200);
         resp.getWriter().println("Started");

@@ -76,14 +76,13 @@ public class LogReaderSpout implements IRichSpout {
     private void generateStream(){
         Integer localIdx = 0;
         while(localIdx++ < 100) {
-//            String listingId = "WID" + randomGenerator.nextInt(2);
-//            String warehouseId = "warehouse" + randomGenerator.nextInt(2);
-//            String sellerId = "sellerId" + randomGenerator.nextInt(2);
+            String listingId = "WID" + randomGenerator.nextInt(2);
+            String warehouseId = "warehouse" + randomGenerator.nextInt(2);
+            String sellerId = "sellerId" + randomGenerator.nextInt(2);
 
-            String listingId = "WID0";
-            String warehouseId = "warehouse0";
-            String sellerId = "sellerId0";
-
+//            String listingId = "WID0";
+//            String warehouseId = "warehouse0";
+//            String sellerId = "sellerId0";
 
             Integer quantity = randomGenerator.nextInt(100);
             Integer idempotenceKey = randomGenerator.nextInt(1000);

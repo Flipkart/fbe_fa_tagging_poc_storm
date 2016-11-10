@@ -1,6 +1,6 @@
 package com.yahoo.labs.slb;
 import backtype.storm.Config;
-import backtype.storm.LocalCluster;
+import backtype.storm.StormSubmitter;
 import backtype.storm.topology.TopologyBuilder;
 import backtype.storm.tuple.Fields;
 
@@ -16,10 +16,12 @@ public class LogAnalyserStorm {
         builder.setBolt("call-log-counter-bolt", new SplitMessageBolt())
                 .fieldsGrouping("call-log-reader-spout", new Fields("warehouseId", "wid"));
 
-        LocalCluster cluster = new LocalCluster();
-        cluster.submitTopology("LogAnalyserStorm", config, builder.createTopology());
-        Thread.sleep(10000);
-        cluster.shutdown();
+        StormSubmitter.submitTopologyWithProgressBar(args[0], config, builder.createTopology());
+
+//        LocalCluster cluster = new LocalCluster();
+//        cluster.submitTopology("LogAnalyserStorm", config, builder.createTopology());
+//        Thread.sleep(10000);
+//        cluster.shutdown();
     }
 }
 
